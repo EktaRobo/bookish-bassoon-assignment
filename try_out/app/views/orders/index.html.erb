@@ -5,19 +5,27 @@
 <table>
   <thead>
     <tr>
-      <th> Grocer Name:</th>
+      <th> Name:</th>
+      <th> Order Status:</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= get_grocer_name(order) %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if !(order.carts == [] || order.carts == nil) %>
+        <tr>
+          <td><%= get_name(order) %></td>
+          <td><%= get_order_status_name(order) %></td>
+          <td><%= link_to 'Show', order %></td>
+          <% if ((get_order_status_name(order) == "New") && (current_user.user_type == "Client"))  %>
+            <td><%= link_to 'Edit', edit_order_path(order) %></td>
+            <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end%>
+        </tr>
+       <% else
+            delete_order(order)
+         end %>
     <% end %>
   </tbody>
 </table>
