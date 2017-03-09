@@ -1,30 +1,27 @@
-<p id="notice"><%= notice %></p>
-
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to 'Grocers List', grocers_path%></li>
+  <li role="presentation"><%= link_to 'My Orders', orders_path%></li>
+</ul>
+<br/>
 <h1>Grocers</h1>
+<br/>
+<% @grocers.each do |grocer| %>
+  <div class="well">
 
-<%= link_to 'My Orders', orders_path, class: "col-md-6 btn-link"%>
-
-<table>
-  <thead>
-    <tr>
-      <th>Grocer Name</th>
-      <th>Grocer Address</th>
-      <th>Grocer Contact</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @grocers.each do |grocer| %>
-      <tr>
-        <td><%= grocer.name %></td>
-        <td><%= grocer.address %></td>
-        <td><%= grocer.phone_no %></td>
-        <td><%= link_to 'Show', grocer %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="circle"> <%= image_tag grocer.dp.url(:thumb) %> </div>
+      </div>
+      <div class="col-xs-3">
+        <h4><%= link_to grocer.name, grocer%></small></h4>
+      </div>
+      <div class="col-xs-3">
+          <h4><%= grocer.phone_no %></small></h4>
+      </div>
+      <div class="col-xs-3">
+          <h4><%= grocer.address %></small></h4>
+      </div>
+    </div>
+  </div>
+<%end%>
 

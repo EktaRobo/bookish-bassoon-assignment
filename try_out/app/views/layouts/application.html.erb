@@ -3,13 +3,16 @@
   <head>
     <title>Grocery Management </title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i" rel="stylesheet">
    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <% if request.ssl? %>
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <% else %>
     <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <% end %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   </head>
@@ -27,8 +30,18 @@
     <hr>
 
     <% if user_signed_in? %>
-    <p> Hello, <%= current_user.name%></p> <div class = "circle center"><%= image_tag current_user.dp.url(:thumb) %></div> <p class = "text-right"> <%= link_to "Sign Out", destroy_user_session_path,
-    :method => :delete %> </p>
+
+    <div class="row">
+      <div class="col-xs-4">
+        <p> Hello, <%= current_user.name%></p>
+      </div>
+      <div class="col-xs-4 text-center">
+        <div class = "circle"><%=image_tag current_user.dp.url(:thumb) %></div>
+      </div>
+      <div class="col-xs-4 text-right">
+        <%= link_to "Sign Out", destroy_user_session_path,:method => :delete %>
+      </div>
+    </div>
     <br>
     <% end %>
     <%= yield %>

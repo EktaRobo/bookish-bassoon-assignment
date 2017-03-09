@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ body {
+    font-family: 'Crimson Text', serif;
+ }
  .circle {
     line-height: 0;     /* remove line-height */
     display: inline-block;  /* circle wraps image */
@@ -31,3 +34,8 @@
     transform: scale(0.8) rotate(20deg);
 }*/
 a.circle { color: transparent; }
+
+.col-centered{
+    display: table;
+  margin: 0 auto;
+}

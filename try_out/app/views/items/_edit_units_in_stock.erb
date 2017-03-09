@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" , class: "form-control col-md-6">
     <%= f.label :units_in_stock %>
-    <%= f.number_field :units_in_stock %>
+    <%= f.number_field :units_in_stock, class: "form-control col-md-6" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" , class: "form-control col-md-6">
+    <%= f.submit "Add stock", class: "btn btn-primary col-centered" %>
   </div>
 <% end %>

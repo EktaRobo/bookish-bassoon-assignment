@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="row">
+      <div class="field col-md-3">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control col-md-6" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
+      <div class="field col-md-3">
+        <%= f.label :price_per_unit %>
+        <%= f.text_field :price_per_unit, class: "form-control col-md-6"  %>
+      </div>
 
-  <div class="field">
-    <%= f.label :price_per_unit %>
-    <%= f.text_field :price_per_unit %>
-  </div>
+      <div class="field col-md-3">
+        <%= f.label :unit %>
+        <%= f.text_field :unit, class: "form-control col-md-6"  %>
+      </div>
 
-  <div class="field">
-    <%= f.label :unit %>
-    <%= f.text_field :unit %>
-  </div>
-
-  <div class="field">
-    <%= f.label :units_in_stock %>
-    <%= f.number_field :units_in_stock %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="field col-md-3">
+        <%= f.label :units_in_stock %>
+        <%= f.number_field :units_in_stock, class: "form-control col-md-6"  %>
+      </div>
+   </div>
+   <br/>
+    <div class="field col-centered">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+  <br/>
+    <div class="actions">
+      <%= f.submit "Add Item", class: "btn btn-primary col-centered" %>
+    </div>
 <% end %>
