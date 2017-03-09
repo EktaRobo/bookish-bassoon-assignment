@@ -27,7 +27,7 @@
     <hr>
 
     <% if user_signed_in? %>
-    <p> Hello, <%= current_user.name%> - <%= link_to "Sign Out", destroy_user_session_path,
+    <p> Hello, <%= current_user.name%></p> <div class = "circle center"><%= image_tag current_user.dp.url(:thumb) %></div> <p class = "text-right"> <%= link_to "Sign Out", destroy_user_session_path,
     :method => :delete %> </p>
     <br>
     <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307104851) do
+ActiveRecord::Schema.define(version: 20170309083637) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "item_id"
@@ -34,12 +34,16 @@ ActiveRecord::Schema.define(version: 20170307104851) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "price_per_unit", precision: 12, scale: 3
+    t.decimal  "price_per_unit",     precision: 12, scale: 3
     t.string   "unit"
     t.integer  "units_in_stock"
     t.integer  "grocer_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["grocer_id"], name: "index_items_on_grocer_id"
   end
 
@@ -77,6 +81,10 @@ ActiveRecord::Schema.define(version: 20170307104851) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "dp_file_name"
+    t.string   "dp_content_type"
+    t.integer  "dp_file_size"
+    t.datetime "dp_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

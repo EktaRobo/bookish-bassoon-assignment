@@ -18,6 +18,7 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item.price_per_unit %></td>
+        <td class = "circle"><%= image_tag item.image.url(:thumb) %></td>
         <td><%= item.unit %></td>
         <td><%= item.units_in_stock %></td>
         <td><%= link_to 'Show', item %></td>

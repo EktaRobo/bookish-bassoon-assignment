@@ -1,13 +1,17 @@
 <div class="well">
 
   <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-4">
       <h4><%= item.name %></small></h4>
+    </div>
+    <div class="col-xs-4">
+      <div class="circle"> <%= image_tag item.image.url(:thumb) %> </div>
     </div>
     <div class="col-xs-4">
 
       <%= form_for cart, remote: true do |f| %>
       <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency item.price_per_unit %></span></h4>
+       <p class: "text-center "> Units Available: <%= item.units_in_stock%></p>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control", max: item.units_in_stock %>
           <div class="input-group-btn">

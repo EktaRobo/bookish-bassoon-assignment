@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.where(:grocer_id => current_user.id)
   end
 
   # GET /items/1
@@ -71,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price_per_unit, :unit, :units_in_stock)
+      params.require(:item).permit(:name, :image, :price_per_unit, :unit, :units_in_stock)
     end
 end

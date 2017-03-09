@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
     validates :user_type, presence: true
 
+    has_attached_file :dp, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100#"}
+    validates_attachment_content_type :dp, content_type: /\Aimage\/.*\z/
+
     scope :clients, -> { where(user_type: 'Client') }
     scope :grocers, -> { where(user_type: 'Grocer') }
 
