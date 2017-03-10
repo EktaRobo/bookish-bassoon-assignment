@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<div class="circle"> <%= image_tag @item.image.url(:medium) %> </div>
+<p>
+  <strong>Price per unit:</strong>
+  <%= @item.price_per_unit %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @item.unit %>
+</p>
+
+<p>
+  <strong>Units in stock:</strong>
+  <%= @item.units_in_stock %>
+</p>
+
+<%= link_to 'Add units in stock', edit_item_path(@item) %> |
+<%= link_to 'Back', root_path %>

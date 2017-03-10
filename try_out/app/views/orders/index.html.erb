@@ -1,10 +1,10 @@
 <ul class="nav nav-tabs">
   <% if (current_user.user_type == "Client") %>
-    <li role="presentation" class="active"><%= link_to 'Grocers List', grocers_path%></li>
+    <li role="presentation"><%= link_to 'Grocers List', grocers_path%></li>
   <%else%>
-    <li role="presentation" class="active"><%= link_to 'Items List', items_path%></li>
+    <li role="presentation"><%= link_to 'Items List', items_path%></li>
   <%end%>
-  <li role="presentation"><%= link_to 'My Orders', orders_path%></li>
+  <li role="presentation" class="active"><%= link_to 'My Orders', orders_path%></li>
 </ul>
 <br/>
 <h1>Orders</h1>

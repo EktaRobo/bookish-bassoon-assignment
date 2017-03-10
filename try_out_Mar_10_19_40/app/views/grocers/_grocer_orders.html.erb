@@ -1,0 +1,36 @@
+<h1>Orders</h1>
+<br/>
+<%refresh_orders%>
+<% @orders.each do |order| %>
+  <% if !(order.carts == [] || order.carts == nil) %>
+  <div class="well">
+    <div class="row">
+      <div class="col-xs-4">
+        <h4><%= link_to get_name(order), order%></small></h4>
+      </div>
+      <div class="col-xs-4">
+        <%if (current_user.user_type == "Client")%>
+          <h4><%= get_order_status_name(order) %></h4>
+        <%else%>
+           <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> <%= get_order_status_name(order) %> <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">New</a></li>
+              <li><a href="#">Accepted</a></li>
+              <li><a href="#">Processing</a></li>
+              <li><a href="#">Dispatched</a></li>
+            </ul>
+          </div>
+        <%end%>
+      </div>
+      <div class="col-xs-4 text-right">
+         <% if ((get_order_status_name(order) == "New") && (current_user.user_type == "Client")) %>
+            <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
+         <% end%>
+      </div>
+    <% else
+          delete_order(order)
+       end %>
+    </div>
+  </div>
+<%end%>

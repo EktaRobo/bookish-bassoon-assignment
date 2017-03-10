@@ -1,0 +1,29 @@
+<h1>Grocers</h1>
+<br/>
+<% @grocers.each do |grocer| %>
+  <div class="well">
+
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="circle"> <%= image_tag grocer.dp.url(:thumb) %> </div>
+      </div>
+      <div class="col-xs-3">
+        <h4><%= link_to grocer.name, grocer, onclick: "change_screen()"%></small></h4>
+      </div>
+      <div class="col-xs-3">
+          <h4><%= grocer.phone_no %></small></h4>
+      </div>
+      <div class="col-xs-3">
+          <h4><%= grocer.address %></small></h4>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+<script>
+function change_screen(){
+  console.log("I'm here")
+   $('.dynamic').load('/client/grocer_item_list');
+}
+
+</script>
