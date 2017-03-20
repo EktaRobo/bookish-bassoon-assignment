@@ -1,0 +1,53 @@
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+       <%= form_for Item.new, html: { multipart: true } do |f| %>
+
+    <div class="row">
+      <div class="field col-md-3">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control col-md-6" %>
+      </div>
+
+      <div class="field col-md-3">
+        <%= f.label :price_per_unit %>
+        <%= f.text_field :price_per_unit, class: "form-control col-md-6"  %>
+      </div>
+
+      <div class="field col-md-3">
+        <%= f.label :unit %>
+        <%= f.text_field :unit, class: "form-control col-md-6"  %>
+      </div>
+
+      <div class="field col-md-3">
+        <%= f.label :units_in_stock %>
+        <%= f.number_field :units_in_stock, class: "form-control col-md-6"  %>
+      </div>
+   </div>
+   <br/>
+    <div class="field col-centered">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+  <br/>
+    <div class="actions">
+      <%= f.submit "Add Item", class: "btn btn-primary col-centered" %>
+    </div>
+<% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

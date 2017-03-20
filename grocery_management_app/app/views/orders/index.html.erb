@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+  <% if (current_user.user_type == "Client") %>
+    <li role="presentation"><%= link_to 'Grocers List', clients_path%></li>
+  <%else%>
+    <li role="presentation"><%= link_to 'Items List', grocers_path%></li>
+  <%end%>
+  <li role="presentation" class="active"><%= link_to 'My Orders', orders_path%></li>
+</ul>
+<br/>
+<h1>Orders</h1>
+<br/>
+<% @orders.each do |order| %>
+  <% if !(order.carts == [] || order.carts == nil) %>
+  <div class="well">
+    <div class="row">
+      <div class="col-xs-4">
+        <h4><%= link_to get_name(order), order%></small></h4>
+      </div>
+      <div class="col-xs-4">
+        <h4><%= get_order_status_name(order) %></h4>
+      </div>
+      <div class="col-xs-4 text-right">
+         <% if ((get_order_status_name(order) == "New") && (current_user.user_type == "Client")) %>
+            <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
+         <% end%>
+      </div>
+    <% else
+          delete_order(order)
+       end %>
+    </div>
+  </div>
+<%end%>

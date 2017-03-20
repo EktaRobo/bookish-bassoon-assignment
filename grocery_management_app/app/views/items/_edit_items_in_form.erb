@@ -1,0 +1,33 @@
+<%= form_for(item) do |f| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br/>
+
+  <div class="field row">
+    <div class=" col-md-6">
+      <%= f.label :units_in_stock %>
+      <%= f.number_field :units_in_stock, class: "form-control " %>
+      </div>
+      <div class=" col-md-6">
+        <br/>
+        <h4><%=item.unit%><h4>
+      </div>
+
+  </div>
+
+  <div class="actions">
+    <div class=" col-md-6">
+      <br/>
+      <%= f.submit "Add stock", class: "btn btn-primary col-centered" %>
+    </div>
+  </div>
+<% end %>

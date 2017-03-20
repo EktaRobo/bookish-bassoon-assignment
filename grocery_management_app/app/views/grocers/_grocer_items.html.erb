@@ -1,0 +1,31 @@
+<h1>Items</h1>
+<br/>
+<% @items.each do |item| %>
+  <div class="well">
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="circle"> <%= image_tag item.image.url(:thumb) %> </div>
+      </div>
+      <div class="col-xs-2">
+        <h4><%= link_to item.name, item%></small></h4>
+      </div>
+      <div class="col-xs-2 ">
+        <h4><%= item.units_in_stock%> <%= item.unit %> in stock</small></h4>
+      </div>
+      <div class="col-xs-2">
+        <h4><%= number_to_currency item.price_per_unit  %> per unit</small></h4>
+      </div>
+      <div class="col-xs-2">
+        <!-- <a  data-toggle="modal" data-target="#myModal" class="btn btn-primary" >Add Units to stock</a> -->
+        <%= link_to 'Add Units to stock', edit_item_path(item), class: "btn btn-primary" %>
+      </div>
+      <div class="col-xs-2">
+         <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
+      </div>
+    </div>
+  </div>
+<%end%>
+<%= render 'add_item_modal' %>
+<hr/>
+
+<%= link_to 'New Item', new_item_path, class: "btn btn-primary col-centered" %>

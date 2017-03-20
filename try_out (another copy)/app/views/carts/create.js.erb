@@ -1,5 +1,0 @@
-<% if @cart.errors.any?%>
-    alert("<%=@order.errors.full_messages.to_sentence%>")
-<% else %>
-  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
-<% end %>

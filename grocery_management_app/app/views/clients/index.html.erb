@@ -1,0 +1,24 @@
+<div class= "dynamic">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">Grocer List</a></li>
+      <li  id="myTab"><a data-toggle="tab" href="#menu1">My Orders</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <%= render 'grocers_list' %>
+      </div>
+      <div id="menu1" class="tab-pane fade">
+      </div>
+    </div>
+</div>
+
+<script>
+
+$('#myTab').click(function(e){
+  console.log("I'm in tab click")
+   $('#menu1').load('/client/client_order_list');
+})
+
+</script>
+
